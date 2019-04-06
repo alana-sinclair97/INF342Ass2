@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HardwareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HardwareDB.dbo.lgdepartment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="lgdepartment">
+    <Key>
+      <PropertyRef Name="dept_num" />
+      <PropertyRef Name="dept_name" />
+    </Key>
+    <Property Name="dept_num" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="dept_name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dept_mail_box" Type="varchar" MaxLength="3" />
+    <Property Name="dept_phone" Type="varchar" MaxLength="9" />
+    <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'HardwareDB.dbo.lgemployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="lgemployee">
+    <Key>
+      <PropertyRef Name="emp_num" />
+      <PropertyRef Name="emp_lname" />
+      <PropertyRef Name="emp_email" />
+      <PropertyRef Name="emp_hireDATETIME" />
+      <PropertyRef Name="emp_title" />
+    </Key>
+    <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="emp_fname" Type="varchar" MaxLength="20" />
+    <Property Name="emp_lname" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="emp_email" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="emp_phone" Type="varchar" MaxLength="20" />
+    <Property Name="emp_hireDATETIME" Type="datetime" Nullable="false" />
+    <Property Name="emp_title" Type="varchar" MaxLength="45" Nullable="false" />
+    <Property Name="emp_comm" Type="numeric" Precision="2" Scale="2" />
+    <Property Name="dept_num" Type="numeric" Precision="5" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'HardwareDB.dbo.lgsalary_history' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="lgsalary_history">
+          <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="sal_from" Type="datetime" />
+          <Property Name="sal_end" Type="datetime" />
+          <Property Name="sal_amount" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>-->
+  <EntityContainer Name="HardwareDBModelStoreContainer">
+    <EntitySet Name="lgdepartment" EntityType="Self.lgdepartment" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [lgdepartment].[dept_num] AS [dept_num], 
+    [lgdepartment].[dept_name] AS [dept_name], 
+    [lgdepartment].[dept_mail_box] AS [dept_mail_box], 
+    [lgdepartment].[dept_phone] AS [dept_phone], 
+    [lgdepartment].[emp_num] AS [emp_num]
+    FROM [dbo].[lgdepartment] AS [lgdepartment]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="lgemployee" EntityType="Self.lgemployee" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [lgemployee].[emp_num] AS [emp_num], 
+    [lgemployee].[emp_fname] AS [emp_fname], 
+    [lgemployee].[emp_lname] AS [emp_lname], 
+    [lgemployee].[emp_email] AS [emp_email], 
+    [lgemployee].[emp_phone] AS [emp_phone], 
+    [lgemployee].[emp_hireDATETIME] AS [emp_hireDATETIME], 
+    [lgemployee].[emp_title] AS [emp_title], 
+    [lgemployee].[emp_comm] AS [emp_comm], 
+    [lgemployee].[dept_num] AS [dept_num]
+    FROM [dbo].[lgemployee] AS [lgemployee]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

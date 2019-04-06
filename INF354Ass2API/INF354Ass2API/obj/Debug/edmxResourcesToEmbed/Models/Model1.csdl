@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HardwareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="lgdepartment">
+    <Key>
+      <PropertyRef Name="dept_num" />
+      <PropertyRef Name="dept_name" />
+    </Key>
+    <Property Name="dept_num" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+    <Property Name="dept_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="dept_mail_box" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="dept_phone" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+    <Property Name="emp_num" Type="Decimal" Precision="6" Scale="0" />
+  </EntityType>
+  <EntityType Name="lgemployee">
+    <Key>
+      <PropertyRef Name="emp_num" />
+      <PropertyRef Name="emp_lname" />
+      <PropertyRef Name="emp_email" />
+      <PropertyRef Name="emp_hireDATETIME" />
+      <PropertyRef Name="emp_title" />
+    </Key>
+    <Property Name="emp_num" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+    <Property Name="emp_fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="emp_lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="emp_hireDATETIME" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="emp_title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="emp_comm" Type="Decimal" Precision="2" Scale="2" />
+    <Property Name="dept_num" Type="Decimal" Precision="5" Scale="0" />
+  </EntityType>
+  <EntityContainer Name="HardwareDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="lgdepartments" EntityType="Self.lgdepartment" />
+    <EntitySet Name="lgemployees" EntityType="Self.lgemployee" />
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HardwareDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HardwareDB.dbo.lgdepartment' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="lgdepartment">
+          <Key>
+            <PropertyRef Name="dept_num" />
+            <PropertyRef Name="dept_name" />
+          </Key>
+          <Property Name="dept_num" Type="numeric" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="dept_name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dept_mail_box" Type="varchar" MaxLength="3" />
+          <Property Name="dept_phone" Type="varchar" MaxLength="9" />
+          <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'HardwareDB.dbo.lgemployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="lgemployee">
+          <Key>
+            <PropertyRef Name="emp_num" />
+            <PropertyRef Name="emp_lname" />
+            <PropertyRef Name="emp_email" />
+            <PropertyRef Name="emp_hireDATETIME" />
+            <PropertyRef Name="emp_title" />
+          </Key>
+          <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="emp_fname" Type="varchar" MaxLength="20" />
+          <Property Name="emp_lname" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="emp_email" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="emp_phone" Type="varchar" MaxLength="20" />
+          <Property Name="emp_hireDATETIME" Type="datetime" Nullable="false" />
+          <Property Name="emp_title" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="emp_comm" Type="numeric" Precision="2" Scale="2" />
+          <Property Name="dept_num" Type="numeric" Precision="5" Scale="0" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'HardwareDB.dbo.lgsalary_history' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="lgsalary_history">
+          <Property Name="emp_num" Type="numeric" Precision="6" Scale="0" />
+          <Property Name="sal_from" Type="datetime" />
+          <Property Name="sal_end" Type="datetime" />
+          <Property Name="sal_amount" Type="numeric" Precision="10" Scale="2" />
+        </EntityType>-->
+        <EntityContainer Name="HardwareDBModelStoreContainer">
+          <EntitySet Name="lgdepartment" EntityType="Self.lgdepartment" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [lgdepartment].[dept_num] AS [dept_num], 
+    [lgdepartment].[dept_name] AS [dept_name], 
+    [lgdepartment].[dept_mail_box] AS [dept_mail_box], 
+    [lgdepartment].[dept_phone] AS [dept_phone], 
+    [lgdepartment].[emp_num] AS [emp_num]
+    FROM [dbo].[lgdepartment] AS [lgdepartment]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="lgemployee" EntityType="Self.lgemployee" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [lgemployee].[emp_num] AS [emp_num], 
+    [lgemployee].[emp_fname] AS [emp_fname], 
+    [lgemployee].[emp_lname] AS [emp_lname], 
+    [lgemployee].[emp_email] AS [emp_email], 
+    [lgemployee].[emp_phone] AS [emp_phone], 
+    [lgemployee].[emp_hireDATETIME] AS [emp_hireDATETIME], 
+    [lgemployee].[emp_title] AS [emp_title], 
+    [lgemployee].[emp_comm] AS [emp_comm], 
+    [lgemployee].[dept_num] AS [dept_num]
+    FROM [dbo].[lgemployee] AS [lgemployee]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HardwareDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="lgdepartment">
+          <Key>
+            <PropertyRef Name="dept_num" />
+            <PropertyRef Name="dept_name" />
+          </Key>
+          <Property Name="dept_num" Type="Decimal" Precision="5" Scale="0" Nullable="false" />
+          <Property Name="dept_name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dept_mail_box" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="dept_phone" Type="String" MaxLength="9" FixedLength="false" Unicode="false" />
+          <Property Name="emp_num" Type="Decimal" Precision="6" Scale="0" />
+        </EntityType>
+        <EntityType Name="lgemployee">
+          <Key>
+            <PropertyRef Name="emp_num" />
+            <PropertyRef Name="emp_lname" />
+            <PropertyRef Name="emp_email" />
+            <PropertyRef Name="emp_hireDATETIME" />
+            <PropertyRef Name="emp_title" />
+          </Key>
+          <Property Name="emp_num" Type="Decimal" Precision="6" Scale="0" Nullable="false" />
+          <Property Name="emp_fname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emp_lname" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_phone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="emp_hireDATETIME" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="emp_title" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="emp_comm" Type="Decimal" Precision="2" Scale="2" />
+          <Property Name="dept_num" Type="Decimal" Precision="5" Scale="0" />
+        </EntityType>
+        <EntityContainer Name="HardwareDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="lgdepartments" EntityType="Self.lgdepartment" />
+          <EntitySet Name="lgemployees" EntityType="Self.lgemployee" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HardwareDBModelStoreContainer" CdmEntityContainer="HardwareDBEntities">
+          <EntitySetMapping Name="lgdepartments">
+            <EntityTypeMapping TypeName="HardwareDBModel.lgdepartment">
+              <MappingFragment StoreEntitySet="lgdepartment">
+                <ScalarProperty Name="dept_num" ColumnName="dept_num" />
+                <ScalarProperty Name="dept_name" ColumnName="dept_name" />
+                <ScalarProperty Name="dept_mail_box" ColumnName="dept_mail_box" />
+                <ScalarProperty Name="dept_phone" ColumnName="dept_phone" />
+                <ScalarProperty Name="emp_num" ColumnName="emp_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lgemployees">
+            <EntityTypeMapping TypeName="HardwareDBModel.lgemployee">
+              <MappingFragment StoreEntitySet="lgemployee">
+                <ScalarProperty Name="emp_num" ColumnName="emp_num" />
+                <ScalarProperty Name="emp_fname" ColumnName="emp_fname" />
+                <ScalarProperty Name="emp_lname" ColumnName="emp_lname" />
+                <ScalarProperty Name="emp_email" ColumnName="emp_email" />
+                <ScalarProperty Name="emp_phone" ColumnName="emp_phone" />
+                <ScalarProperty Name="emp_hireDATETIME" ColumnName="emp_hireDATETIME" />
+                <ScalarProperty Name="emp_title" ColumnName="emp_title" />
+                <ScalarProperty Name="emp_comm" ColumnName="emp_comm" />
+                <ScalarProperty Name="dept_num" ColumnName="dept_num" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
